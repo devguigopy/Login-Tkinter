@@ -1,0 +1,225 @@
+RELATÓRIO - MAIN.PY
+
+Projeto: Login Tkinter
+Arquivo:main.py
+Objetivo: Criar uma primeira versão da lógica de um sistema de Login e praticar conceitos básicos de Python.
+----------------------------------------------------------------
+Criei um programa que solicita ao usuário:
+  - E-mail
+  - Senha
+
+Depois o programa compara os dados digitados com os dados corretos definidos no código.
+Quando o e-mail e a senha estão corretos, o programa mostra uma mensagem que o acesso foi realizado.
+Quando os dados estão incorretos, mostra uma mensagem de acesso negado.
+----------------------------------------------------------------Conceitos que ultilizei:
+  - Variáveis
+  - input()
+  - if
+  - else
+  - while
+  - break
+  - Comparação com ==
+  - Indentação
+----------------------------------------------------------------
+Erro que encontrei:
+
+No inicio, quando eu digitava um e-mail incorreto, o programa não mostrava a mensagem "acesso negado."
+----------------------------------------------------------------
+O que aconteceu: 
+
+Eu tinha colocado if verificava o e-mail e o segundo if verificava senha.
+O else que eu tinha criado tratava apenas o caso da senha estar incorreta.
+Quando o e-mail estava errado, o segundo if nem era executado, por isso nenhuma mensagem aparecia.
+----------------------------------------------------------------Como resolvi:
+
+Adicionei um else para o primeiro if, tratado também o casoem que o e-mail estivesse incorreto.
+----------------------------------------------------------------
+O que aprendi:
+
+Aprendi que a indentação é muito importante em Python.
+Também entendi melhor que cada else pertec a um if especifico e que a posição dele no código muda completamente o comportamento do programa.
+---------------------------------------------------------------Dificuldades:
+
+Ainda estou aprendendo a entender a estrutura dos comandos if e else e como organizar melhor a lógica.
+---------------------------------------------------------------Próximo passo:
+
+Continuar desenvolvendo a lógica de login e depois começar a ultilizar funções e Tkinter.
+---------------------------------------------------------------
+Atualização do código:
+
+Depois de corrigir o problema do else, comecei a organizar melhor o código utilizando uma função.
+---------------------------------------------------------------
+Funções.
+
+Criei uma função chamada login() para organizar a lógica responsável pelo processo de login.
+Dentro da função coloquei:
+ - mensagem inicial
+ - entrada do e-mail
+ - entrada da senha
+ - verificação dos dados
+ 
+Também aprendi a ultilizar return.
+A função retorna True quando o login é realizado com sucesso e False quando os dados estão incorretos.
+Depois utilizo o resultado retornado pela função para decidir se while deve continuar ou terminar.
+---------------------------------------------------------------
+O que aprendi:
+
+Aprendi que uma função pode executar uma tarefa e devolver um resultado para o restante do programa.
+Também entendi melhor a relação entre:
+def => criação da função
+login() => execução da função
+return => devolução de um resultado
+--------------------------------------------------------------- 
+Controle de tentativas.
+
+Adicionei um contador para controlar quantas vezes o usuário errou o login.
+O contador começa em 0, quando login é incorreto, adiciono 1. Depois verifico se o usuário chegou a 3 tentativas.
+Se chegar a 3, o acesso é bloqueado eo while é encerrado.
+-----------------------------------------------------------------
+O que aprendi:
+
+Aprendi a usar uma variável como contador.
+Também entendi que:
+ - tentativas = tentativas +1
+Significa pegar o valor atual da variável e acrecentar 1.
+Aprendi também a usar uma condição para verificar quando o limite foi atingido.
+-----------------------------------------------------------------Teste realizado.
+
+Testei o programa utilizando uma senha incorreta, o programa permitiu 3 tentativas e depois bloqueou o acesso.
+-----------------------------------------------------------------
+Próximo passo:
+
+Melhorar a validade dos dados de login.
+-----------------------------------------------------------------
+Validei o e-mail.
+
+Adcionei uma validação para verificar se o e-mail possui um domínio permitido.
+Quando o e-mail é inválido, a função retorna antes de pedir senha.
+-----------------------------------------------------------------
+Teste realizado.
+
+- E-mail inválido => rejeitado
+- E-mail valido => continua e pede senha
+-----------------------------------------------------------------
+Criação do sistema de cadastro:
+
+ - Criei a função cadastro().
+ - Adicionei validação básica do e-mail usando endswith().
+ - Adicionei criação de senha.
+ - Adicionei criação de e-mail.
+ - Criei confirmação de senha.
+ - Usei while True para repetir a confirmação até as senhas serem iguais
+ - Usei break para sair do loop quando a confirmação estiver correta.
+ - A função retorna e-mail e senha para serem utilizados posteriormente no login.
+-----------------------------------------------------------------
+Mudanças feitas no sistema de logiin:
+
+A função login() receberá email_cadastrado e senha_cadastrada como parâmetros.
+Fiz as comparações de informações do usuãrio com dados cadastrado.
+-----------------------------------------------------------------
+Criação do menu:
+
+ - Criei a função menu().
+ - Adicionei as opções de cadstro, login e saída.
+ - Organizei o fluxo do programa usando while True.
+-----------------------------------------------------------------
+O que aprendi:
+
+Aprendi como uma informação pode sair de uma função através do return e depois ser armazenada em outra parte do programa.
+Também entendi melhor a ultilização de parâmetros, passando informações de uma função para outra.
+-----------------------------------------------------------------
+Melhorando a validação da senha:
+
+Depois de implementar a validação básica do e-mail, comecei a melhorar a validação de senha.
+Adicionei os módulos re e getpass.
+Implementei o getpass.getpass() para receber a senha sem deixá-la visíveç no terminal enquanto o usuário digita.
+Ultilizei o módulo re parta procurar diferentes características dentro da senha.
+
+Passei a verificar se a senha possui:
+ - Pelo menos 8 caracteres
+ - Uma letra maiúscula
+ - Uma letra minúscula
+ - Um número
+ - Um símbolo 
+Para fazer essas verificações, ultilizei re.search*().
+
+Criei variáveis para representar cada requisito para o indicador da senha.
+ - tem_tamanho
+ - tem_maiuscula
+ - tem_minuscula
+ - tem_numero
+ - tem_simbolo
+Cada uma representa se determinado requisito foi cumprido.
+Depois ultilizei sum() para contar quantos requisitos foram atendidos e armazenar esse resultado em indicador.
+
+Com esse valor, classifiquei a senha em:
+ - Senha fraca
+ - Senha média
+ - Senha forte
+-----------------------------------------------------------------
+Repetição da senha: 
+
+Ultilizei while True para manter o usuário no processo de criação de senha até que ela cumpra os requisitos.
+Depois que a senha é considerada válida, o programa solicita a confirmação da senha.
+Se as duas senhas forem iguais, ultilizo break para sair do while.
+----------------------------------------------------------------
+O que aprendi:
+
+Aprendi a ultilizar módulos de python através de import.
+Também aprendi uma aplicação prática de expressçoes regulares com re.search() e como transformar seus resultados em True ou False usando boo().
+Além disso, comecei a entender como juntar várias condições diferentes para criar uma validação mais completa.
+-----------------------------------------------------------------
+Próximo passo: finalizar essa partye de validação da senha e depois revisar o fluxo completo do cadastro e login antes de partir para Tkinter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
